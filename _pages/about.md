@@ -1,11 +1,13 @@
 ---
 layout: page
-title: About Me
+title: About
 permalink: /about/
 ---
 
-This website is powered by **[fastpages](https://github.com/fastai/fastpages)** [^1].
+This is a research blog of the *RFPT* - an open-access french scientific journal for Photogrammetry and Remote Sensing. 
+For more information go to [our website](https://rfpt.sfpt.fr).
 
 
 
-[^1]:a blogging platform that natively supports Jupyter notebooks in addition to other formats.
+
+The website is powered by *[fastpages](https://github.com/fastai/fastpages)*.
