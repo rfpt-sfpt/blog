@@ -15,8 +15,7 @@ LIED (Laboratoire Interdisciplinaire des Energies de Demain) :
 https://u-paris.fr/sdv/laboratoire-interdisciplinaire-des-energies-de-demain/
 
 
-![](images/AnVoQuang_image.png){width="6.479166666666667in" height="2.15625in"}
-
+![](images/AnVoQuang_image.png)
 Figure : un faible effort de photo-interprétation pour la production de
 cartes de forêts dégradées.
 
