@@ -60,7 +60,7 @@ cartes de forêts dégradées.
  intégrant les données du capteur Sentinel-2, acquises de manière
  répétitive.
 
-# Partie principale (Données/Méthodes/Expérimentation)
+# Méthodologies
 
  Les travaux de thèse proposent une procédure de détection des forêts
  dégradées à l\'aide de l\'imagerie multispectrale Sentinel-2 en
@@ -109,6 +109,7 @@ cartes de forêts dégradées.
  toutes tailles. Il repose sur la segmentation sémantique, qui associe
  une catégorie à chaque pixel d\'une image.
 
+## Dataset
  La tâche la plus chronophage a été de constituer un dataset assez
  volumineux pour entraîner notre UNET adapté. Les tâches de DL, de par
  les architectures des réseaux et le nombre de paramètres à entraîner
@@ -119,6 +120,7 @@ cartes de forêts dégradées.
  certaines régions, afin de permettre au modèle de faire la différence
  entre les changements saisonniers et naturels.
 
+## Evaluation
  Ce modèle a été testé entre autres sur Nimba, une zone montagneuse
  boisée à l'extrémité sud de la Guinée, à la frontière de la Côte
  d'Ivoire. Le modèle de Deep Learning parvient à inférer sur cette zone
@@ -128,6 +130,7 @@ cartes de forêts dégradées.
  matrices de confusion et métriques kappa. Les taux de réussite sont de
  95% en moyenne sur les trois zones testées en Guinée.
 
+## Conclusion
  L'ensemble de ces recherches présente une base solide pour les
  opérateurs nationaux lors de l'étape de vectorisation et un grand
  soutien pour la procédure de photo-interprétation pour une production
