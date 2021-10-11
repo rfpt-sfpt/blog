@@ -130,7 +130,7 @@ cartes de forêts dégradées.")
  matrices de confusion et métriques kappa. Les taux de réussite sont de
  95% en moyenne sur les trois zones testées en Guinée.
 
-## Conclusion
+# Conclusion
  L'ensemble de ces recherches présente une base solide pour les
  opérateurs nationaux lors de l'étape de vectorisation et un grand
  soutien pour la procédure de photo-interprétation pour une production
