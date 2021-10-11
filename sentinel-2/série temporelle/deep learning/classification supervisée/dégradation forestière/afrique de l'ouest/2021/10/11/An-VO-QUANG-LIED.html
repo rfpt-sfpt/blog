@@ -9,8 +9,8 @@
 <meta property="og:title" content="Détection des forêts dégradées en Guinée à partir des images satellites Sentinel-2" />
 <meta name="author" content="An VO QUANG" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A tutorial on notebook, markdown, Word doc article writing" />
-<meta property="og:description" content="A tutorial on notebook, markdown, Word doc article writing" />
+<meta name="description" content="Evaluation de l’apport potentiel des nouveaux capteurs satellitaires optiques et radars" />
+<meta property="og:description" content="Evaluation de l’apport potentiel des nouveaux capteurs satellitaires optiques et radars" />
 <link rel="canonical" href="https://rfpt-sfpt.github.io/blog/sentinel-2/s%C3%A9rie%20temporelle/deep%20learning/classification%20supervis%C3%A9e/d%C3%A9gradation%20foresti%C3%A8re/afrique%20de%20l'ouest/2021/10/11/An-VO-QUANG-LIED.html" />
 <meta property="og:url" content="https://rfpt-sfpt.github.io/blog/sentinel-2/s%C3%A9rie%20temporelle/deep%20learning/classification%20supervis%C3%A9e/d%C3%A9gradation%20foresti%C3%A8re/afrique%20de%20l'ouest/2021/10/11/An-VO-QUANG-LIED.html" />
 <meta property="og:site_name" content="Revue française de photogrammétrie et de Télédétection" />
@@ -18,7 +18,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-10-11T00:00:00-05:00" />
 <script type="application/ld+json">
-{"url":"https://rfpt-sfpt.github.io/blog/sentinel-2/s%C3%A9rie%20temporelle/deep%20learning/classification%20supervis%C3%A9e/d%C3%A9gradation%20foresti%C3%A8re/afrique%20de%20l'ouest/2021/10/11/An-VO-QUANG-LIED.html","@type":"BlogPosting","headline":"Détection des forêts dégradées en Guinée à partir des images satellites Sentinel-2","dateModified":"2021-10-11T00:00:00-05:00","datePublished":"2021-10-11T00:00:00-05:00","image":"https://rfpt-sfpt.github.io/blog/images/AnVoQuang_image.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://rfpt-sfpt.github.io/blog/sentinel-2/s%C3%A9rie%20temporelle/deep%20learning/classification%20supervis%C3%A9e/d%C3%A9gradation%20foresti%C3%A8re/afrique%20de%20l'ouest/2021/10/11/An-VO-QUANG-LIED.html"},"author":{"@type":"Person","name":"An VO QUANG"},"description":"A tutorial on notebook, markdown, Word doc article writing","@context":"https://schema.org"}</script>
+{"url":"https://rfpt-sfpt.github.io/blog/sentinel-2/s%C3%A9rie%20temporelle/deep%20learning/classification%20supervis%C3%A9e/d%C3%A9gradation%20foresti%C3%A8re/afrique%20de%20l'ouest/2021/10/11/An-VO-QUANG-LIED.html","@type":"BlogPosting","headline":"Détection des forêts dégradées en Guinée à partir des images satellites Sentinel-2","dateModified":"2021-10-11T00:00:00-05:00","datePublished":"2021-10-11T00:00:00-05:00","image":"https://rfpt-sfpt.github.io/blog/images/AnVoQuang_image.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://rfpt-sfpt.github.io/blog/sentinel-2/s%C3%A9rie%20temporelle/deep%20learning/classification%20supervis%C3%A9e/d%C3%A9gradation%20foresti%C3%A8re/afrique%20de%20l'ouest/2021/10/11/An-VO-QUANG-LIED.html"},"author":{"@type":"Person","name":"An VO QUANG"},"description":"Evaluation de l’apport potentiel des nouveaux capteurs satellitaires optiques et radars","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://rfpt-sfpt.github.io/blog/feed.xml" title="Revue française de photogrammétrie et de Télédétection" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -89,7 +89,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Détection des forêts dégradées en Guinée à partir des images satellites Sentinel-2</h1><p class="page-description">A tutorial on notebook, markdown, Word doc article writing</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-10-11T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Détection des forêts dégradées en Guinée à partir des images satellites Sentinel-2</h1><p class="page-description">Evaluation de l'apport potentiel des nouveaux capteurs satellitaires optiques et radars</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-10-11T00:00:00-05:00" itemprop="datePublished">
         Oct 11, 2021
       </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -129,6 +129,11 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#contexte">Contexte</a></li>
+<li class="toc-entry toc-h1"><a href="#partie-principale-donnéesméthodesexpérimentation">Partie principale (Données/Méthodes/Expérimentation)</a></li>
+<li class="toc-entry toc-h1"><a href="#bibliographie">Bibliographie</a></li>
+<li class="toc-entry toc-h1"><a href="#communication-poster">Communication poster:</a></li>
+<li class="toc-entry toc-h1"><a href="#contact">Contact</a></li>
 </ul><p>LIED (Laboratoire Interdisciplinaire des Energies de Demain) :
 https://u-paris.fr/sdv/laboratoire-interdisciplinaire-des-energies-de-demain/</p>
 
@@ -137,136 +142,127 @@ https://u-paris.fr/sdv/laboratoire-interdisciplinaire-des-energies-de-demain/</p
 <p>Figure : un faible effort de photo-interprétation pour la production de
 cartes de forêts dégradées.</p>
 
-<ol>
-  <li>Contexte</li>
-</ol>
+<h1 id="contexte">
+<a class="anchor" href="#contexte" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contexte</h1>
 
-<blockquote>
-  <p>Les travaux de la thèse CIFRE ont été réalisés dans le cadre d'un
-partenariat entre l'Institut interdisciplinaire de recherche en
-énergie de Paris (LIED) et IGN FI, une société d'ingénierie
-géographique (partenaire export de l'IGN - Institut national de
-l’information géographique et forestière) qui réalise des projets sur
-tous les continents et dans tous les domaines d'application de la
-géomatique, notamment l'aménagement du territoire, l'environnement,
-l'agriculture, l'administration foncière ou la gestion des risques.
-Plus spécifiquement, les travaux de thèse se sont intégrés au projet
-de Zonage Agro-Ecologique de Guinée (ZAEG) coordonné par IGN FI et
-financé par l'Agence Française de Développement (AFD) pour le
-ministère de l’Agriculture de Guinée.</p>
+<p>Les travaux de la thèse CIFRE ont été réalisés dans le cadre d'un
+ partenariat entre l'Institut interdisciplinaire de recherche en
+ énergie de Paris (LIED) et IGN FI, une société d'ingénierie
+ géographique (partenaire export de l'IGN - Institut national de
+ l’information géographique et forestière) qui réalise des projets sur
+ tous les continents et dans tous les domaines d'application de la
+ géomatique, notamment l'aménagement du territoire, l'environnement,
+ l'agriculture, l'administration foncière ou la gestion des risques.
+ Plus spécifiquement, les travaux de thèse se sont intégrés au projet
+ de Zonage Agro-Ecologique de Guinée (ZAEG) coordonné par IGN FI et
+ financé par l'Agence Française de Développement (AFD) pour le
+ ministère de l’Agriculture de Guinée.</p>
 
-  <p>Contrairement à la déforestation, la dégradation forestière implique
-un changement de la structure forestière sans modification de
-l'utilisation du sol. Ce changement est subtil et moins visible que
-la déforestation. La dégradation des forêts est une préoccupation
-majeure car un potentiel de séquestration du carbone est perdu. Ce
-phénomène varie en fonction de l'emplacement géographique, des
-facteurs anthropiques, du climat, des types de forêts impactées, donc
-il n'existe pas de méthodologie de détection unique pour
-cartographier la dégradation des forêts à l'échelle mondiale.</p>
+<p>Contrairement à la déforestation, la dégradation forestière implique
+ un changement de la structure forestière sans modification de
+ l'utilisation du sol. Ce changement est subtil et moins visible que
+ la déforestation. La dégradation des forêts est une préoccupation
+ majeure car un potentiel de séquestration du carbone est perdu. Ce
+ phénomène varie en fonction de l'emplacement géographique, des
+ facteurs anthropiques, du climat, des types de forêts impactées, donc
+ il n'existe pas de méthodologie de détection unique pour
+ cartographier la dégradation des forêts à l'échelle mondiale.</p>
 
-  <p>En Guinée, le principal processus de dégradation est l'exploitation
-forestière sélective dans la forêt de massif, en plus de la
-fragmentation de la forêt causée par le changement d'utilisation des
-terres.</p>
+<p>En Guinée, le principal processus de dégradation est l'exploitation
+ forestière sélective dans la forêt de massif, en plus de la
+ fragmentation de la forêt causée par le changement d'utilisation des
+ terres.</p>
 
-  <p>L’objectif est d’optimiser les méthodes de photo-interprétation
-utilisées par IGN FI pour détecter les zones de forêt dégradée. Le
-suivi du couvert forestier à l'aide des méthodes traditionnelles de
-télédétection nécessite un coût important en termes d'expertise en
-photo-interprétation. Nous proposons une approche de suivi par une
-procédure de classification semi-automatisée avec un coût de
-photo-interprétation minimum en incluant le contexte pixellaire, en
-intégrant les données du capteur Sentinel-2, acquises de manière
-répétitive.</p>
-</blockquote>
+<p>L’objectif est d’optimiser les méthodes de photo-interprétation
+ utilisées par IGN FI pour détecter les zones de forêt dégradée. Le
+ suivi du couvert forestier à l'aide des méthodes traditionnelles de
+ télédétection nécessite un coût important en termes d'expertise en
+ photo-interprétation. Nous proposons une approche de suivi par une
+ procédure de classification semi-automatisée avec un coût de
+ photo-interprétation minimum en incluant le contexte pixellaire, en
+ intégrant les données du capteur Sentinel-2, acquises de manière
+ répétitive.</p>
 
-<ol>
-  <li>Partie principale (Données/Méthodes/Expérimentation)</li>
-</ol>
+<h1 id="partie-principale-donnéesméthodesexpérimentation">
+<a class="anchor" href="#partie-principale-donn%C3%A9esm%C3%A9thodesexp%C3%A9rimentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Partie principale (Données/Méthodes/Expérimentation)</h1>
 
-<blockquote>
-  <p>Les travaux de thèse proposent une procédure de détection des forêts
-dégradées à l'aide de l'imagerie multispectrale Sentinel-2 en
-Guinée, en Afrique de l'Ouest, notamment une série temporelle de 23
-images Sentinel-2 acquises de 2015 à 2020.</p>
+<p>Les travaux de thèse proposent une procédure de détection des forêts
+ dégradées à l'aide de l'imagerie multispectrale Sentinel-2 en
+ Guinée, en Afrique de l'Ouest, notamment une série temporelle de 23
+ images Sentinel-2 acquises de 2015 à 2020.</p>
 
-  <p>Des indices radiométriques sont dérivés des réflectances Sentinel-2.
-Leurs séries temporelles montrent que ceux liés à l'humidité (Canopy
-Water Content CWC, Moisture Stress Index MSI), associés à l'indice de
-surface foliaire (LAI), sont fortement liés au degré de dégradation,
-car ils sont liés à la dessiccation du feuillage de la canopée.</p>
+<p>Des indices radiométriques sont dérivés des réflectances Sentinel-2.
+ Leurs séries temporelles montrent que ceux liés à l'humidité (Canopy
+ Water Content CWC, Moisture Stress Index MSI), associés à l'indice de
+ surface foliaire (LAI), sont fortement liés au degré de dégradation,
+ car ils sont liés à la dessiccation du feuillage de la canopée.</p>
 
-  <p>Des méthodologies de classification sont établies impliquant ces
-indices LAI, MSI et CWC. Deux types de classification sont comparés :
-une classification standard basée sur les pixels et une méthode de
-classification prenant en compte des informations contextuelles en
-incluant les valeurs de pixels voisins dans l'algorithme. La dernière
-méthode montre de meilleurs scores de précision et les résultats
-cartographiques ont été validés à l'aide d'un ensemble
-d'observations de terrain réalisées avec un forestier local. Mais la
-méthode contextuelle ne peut pas se passer d’une part de
-photo-interprétation. Cette part est réduite puisque l’interprétation
-visuelle de 5% de la surface de l’image suffit à étalonner la méthode
-semi-automatisée, ce qui correspond à une nette avancée par rapport
-aux méthodes existantes utilisées dans les projets internationaux de
-certification de l’état des forêts tropicales.</p>
+<p>Des méthodologies de classification sont établies impliquant ces
+ indices LAI, MSI et CWC. Deux types de classification sont comparés :
+ une classification standard basée sur les pixels et une méthode de
+ classification prenant en compte des informations contextuelles en
+ incluant les valeurs de pixels voisins dans l'algorithme. La dernière
+ méthode montre de meilleurs scores de précision et les résultats
+ cartographiques ont été validés à l'aide d'un ensemble
+ d'observations de terrain réalisées avec un forestier local. Mais la
+ méthode contextuelle ne peut pas se passer d’une part de
+ photo-interprétation. Cette part est réduite puisque l’interprétation
+ visuelle de 5% de la surface de l’image suffit à étalonner la méthode
+ semi-automatisée, ce qui correspond à une nette avancée par rapport
+ aux méthodes existantes utilisées dans les projets internationaux de
+ certification de l’état des forêts tropicales.</p>
 
-  <p>L'inclusion de pixels voisins dans le processus de classification
-conduit à une forte amélioration des résultats, ce qui peut refléter
-le fait que le contexte est le critère principal des méthodes basées
-sur la photo-interprétation pour détecter les forêts dégradées.</p>
+<p>L'inclusion de pixels voisins dans le processus de classification
+ conduit à une forte amélioration des résultats, ce qui peut refléter
+ le fait que le contexte est le critère principal des méthodes basées
+ sur la photo-interprétation pour détecter les forêts dégradées.</p>
 
-  <p>Une autre méthode utilisant le contexte a donc été développée basée
-sur l’intelligence artificielle, afin de s’affranchir du besoin de
-photo-interprétation. Au vu des résultats obtenus avec la méthode
-contextuelle, il nous a paru évident d’essayer des méthodes de Deep
-Learning (DL). Comme pour le Random Forest, les classifications sont
-faites sur une seule photo avec le DL. En revanche dans le cas du DL,
-l'entraînement se fait sur des séries d'images (sur plusieurs
-endroits, à plusieurs époques). L'entraînement se fait donc sur de
-plus grandes quantités de données et plus la quantité de données est
-élevée, plus les modèles sont capables de reconnaître une plus grande
-variabilité dans les paysages et les saisons. Notre modèle est un UNET
-adapté à une utilisation avec des images à 13 bandes. Ce réseau, étant
-convolutionnel de bout en bout, peut accepter en entrée des images de
-toutes tailles. Il repose sur la segmentation sémantique, qui associe
-une catégorie à chaque pixel d'une image.</p>
+<p>Une autre méthode utilisant le contexte a donc été développée basée
+ sur l’intelligence artificielle, afin de s’affranchir du besoin de
+ photo-interprétation. Au vu des résultats obtenus avec la méthode
+ contextuelle, il nous a paru évident d’essayer des méthodes de Deep
+ Learning (DL). Comme pour le Random Forest, les classifications sont
+ faites sur une seule photo avec le DL. En revanche dans le cas du DL,
+ l'entraînement se fait sur des séries d'images (sur plusieurs
+ endroits, à plusieurs époques). L'entraînement se fait donc sur de
+ plus grandes quantités de données et plus la quantité de données est
+ élevée, plus les modèles sont capables de reconnaître une plus grande
+ variabilité dans les paysages et les saisons. Notre modèle est un UNET
+ adapté à une utilisation avec des images à 13 bandes. Ce réseau, étant
+ convolutionnel de bout en bout, peut accepter en entrée des images de
+ toutes tailles. Il repose sur la segmentation sémantique, qui associe
+ une catégorie à chaque pixel d'une image.</p>
 
-  <p>La tâche la plus chronophage a été de constituer un dataset assez
-volumineux pour entraîner notre UNET adapté. Les tâches de DL, de par
-les architectures des réseaux et le nombre de paramètres à entraîner
-requièrent des quantités phénoménales de données pour atteindre les
-résultats souhaités. Le fait que la tâche soit de la segmentation
-n’arrange rien au problème. Finalement le dataset d'entraînement
-contenait plus de 39000 km2 labellisés sur jusqu’à trois années sur
-certaines régions, afin de permettre au modèle de faire la différence
-entre les changements saisonniers et naturels.</p>
+<p>La tâche la plus chronophage a été de constituer un dataset assez
+ volumineux pour entraîner notre UNET adapté. Les tâches de DL, de par
+ les architectures des réseaux et le nombre de paramètres à entraîner
+ requièrent des quantités phénoménales de données pour atteindre les
+ résultats souhaités. Le fait que la tâche soit de la segmentation
+ n’arrange rien au problème. Finalement le dataset d'entraînement
+ contenait plus de 39000 km2 labellisés sur jusqu’à trois années sur
+ certaines régions, afin de permettre au modèle de faire la différence
+ entre les changements saisonniers et naturels.</p>
 
-  <p>Ce modèle a été testé entre autres sur Nimba, une zone montagneuse
-boisée à l’extrémité sud de la Guinée, à la frontière de la Côte
-d’Ivoire. Le modèle de Deep Learning parvient à inférer sur cette zone
-forestière sur laquelle il ne s’est pas entraîné, sur des images
-acquises en 2020 (mois de décembre). Afin d’évaluer la qualité et la
-performance du modèle, une carte de référence a permis de produire les
-matrices de confusion et métriques kappa. Les taux de réussite sont de
-95% en moyenne sur les trois zones testées en Guinée.</p>
+<p>Ce modèle a été testé entre autres sur Nimba, une zone montagneuse
+ boisée à l’extrémité sud de la Guinée, à la frontière de la Côte
+ d’Ivoire. Le modèle de Deep Learning parvient à inférer sur cette zone
+ forestière sur laquelle il ne s’est pas entraîné, sur des images
+ acquises en 2020 (mois de décembre). Afin d’évaluer la qualité et la
+ performance du modèle, une carte de référence a permis de produire les
+ matrices de confusion et métriques kappa. Les taux de réussite sont de
+ 95% en moyenne sur les trois zones testées en Guinée.</p>
 
-  <p>L’ensemble de ces recherches présente une base solide pour les
-opérateurs nationaux lors de l’étape de vectorisation et un grand
-soutien pour la procédure de photo-interprétation pour une production
-de cartes moins longue et coûteuse, offrant des bases importantes pour
-la délimitation des forêts dégradées dans des régions présentant des
-conditions similaires de forêts dégradées.</p>
-</blockquote>
+<p>L’ensemble de ces recherches présente une base solide pour les
+ opérateurs nationaux lors de l’étape de vectorisation et un grand
+ soutien pour la procédure de photo-interprétation pour une production
+ de cartes moins longue et coûteuse, offrant des bases importantes pour
+ la délimitation des forêts dégradées dans des régions présentant des
+ conditions similaires de forêts dégradées.</p>
 
-<ol>
-  <li>Bibliographie</li>
-</ol>
+<h1 id="bibliographie">
+<a class="anchor" href="#bibliographie" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bibliographie</h1>
 
-<blockquote>
-  <p>Articles:</p>
-</blockquote>
+<p>Articles:</p>
 
 <ul>
   <li>
@@ -292,7 +288,8 @@ Antarctica). Polar Biology, 40(2), 313-320.</p>
   </li>
 </ul>
 
-<p>Posters:</p>
+<h1 id="communication-poster">
+<a class="anchor" href="#communication-poster" aria-hidden="true"><span class="octicon octicon-link"></span></a>Communication poster:</h1>
 
 <ul>
   <li>
@@ -308,9 +305,8 @@ Antarctica (2014) Poster, SCAR Open Science Conference, New Zealand.</p>
   </li>
 </ul>
 
-<ol>
-  <li>Contact</li>
-</ol>
+<h1 id="contact">
+<a class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h1>
 
 <blockquote>
   <p>avoquang\@ignfi.fr</p>
