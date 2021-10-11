@@ -12,7 +12,7 @@ title: "Détection des forêts dégradées en Guinée à partir des images satel
 ---
 
 
-{% include info.html text="Les travaux de recherche presentés en-dessous ont été menés au sein du [*Laboratoire Interdisciplinaire des Energies de Demain* (LIED)](https://u-paris.fr/sdv/laboratoire-interdisciplinaire-des-energies-de-demain/)" %}
+{% include note.html text="Les travaux de recherche presentés en-dessous ont été menés au sein du [*Laboratoire Interdisciplinaire des Energies de Demain* (LIED)](https://u-paris.fr/sdv/laboratoire-interdisciplinaire-des-energies-de-demain/)" %}
 
 
 
