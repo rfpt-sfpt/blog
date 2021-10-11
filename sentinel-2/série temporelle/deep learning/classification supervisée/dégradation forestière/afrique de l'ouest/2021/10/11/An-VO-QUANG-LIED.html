@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Détection des forêts dégradées en Guinée à partir des images satellites Sentinel-2 | Revue française de photogrammétrie et de Télédétection</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Détection des forêts dégradées en Guinée à partir des images satellites Sentinel-2" />
+<meta name="author" content="An VO QUANG" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A tutorial on notebook, markdown, Word doc article writing" />
+<meta property="og:description" content="A tutorial on notebook, markdown, Word doc article writing" />
+<link rel="canonical" href="https://rfpt-sfpt.github.io/blog/sentinel-2/s%C3%A9rie%20temporelle/deep%20learning/classification%20supervis%C3%A9e/d%C3%A9gradation%20foresti%C3%A8re/afrique%20de%20l'ouest/2021/10/11/An-VO-QUANG-LIED.html" />
+<meta property="og:url" content="https://rfpt-sfpt.github.io/blog/sentinel-2/s%C3%A9rie%20temporelle/deep%20learning/classification%20supervis%C3%A9e/d%C3%A9gradation%20foresti%C3%A8re/afrique%20de%20l'ouest/2021/10/11/An-VO-QUANG-LIED.html" />
+<meta property="og:site_name" content="Revue française de photogrammétrie et de Télédétection" />
+<meta property="og:image" content="https://rfpt-sfpt.github.io/blog/images/AnVoQuang_image.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-10-11T00:00:00-05:00" />
+<script type="application/ld+json">
+{"url":"https://rfpt-sfpt.github.io/blog/sentinel-2/s%C3%A9rie%20temporelle/deep%20learning/classification%20supervis%C3%A9e/d%C3%A9gradation%20foresti%C3%A8re/afrique%20de%20l'ouest/2021/10/11/An-VO-QUANG-LIED.html","@type":"BlogPosting","headline":"Détection des forêts dégradées en Guinée à partir des images satellites Sentinel-2","dateModified":"2021-10-11T00:00:00-05:00","datePublished":"2021-10-11T00:00:00-05:00","image":"https://rfpt-sfpt.github.io/blog/images/AnVoQuang_image.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://rfpt-sfpt.github.io/blog/sentinel-2/s%C3%A9rie%20temporelle/deep%20learning/classification%20supervis%C3%A9e/d%C3%A9gradation%20foresti%C3%A8re/afrique%20de%20l'ouest/2021/10/11/An-VO-QUANG-LIED.html"},"author":{"@type":"Person","name":"An VO QUANG"},"description":"A tutorial on notebook, markdown, Word doc article writing","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://rfpt-sfpt.github.io/blog/feed.xml" title="Revue française de photogrammétrie et de Télédétection" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Revue française de photogrammétrie et de Télédétection</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Détection des forêts dégradées en Guinée à partir des images satellites Sentinel-2</h1><p class="page-description">A tutorial on notebook, markdown, Word doc article writing</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-10-11T00:00:00-05:00" itemprop="datePublished">
+        Oct 11, 2021
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">An VO QUANG</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      6 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#Sentinel-2">Sentinel-2</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#Série temporelle">Série temporelle</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#Deep learning">Deep learning</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#Classification supervisée">Classification supervisée</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#Dégradation forestière">Dégradation forestière</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#Afrique de l'Ouest">Afrique de l'Ouest</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+</ul><p>LIED (Laboratoire Interdisciplinaire des Energies de Demain) :
+https://u-paris.fr/sdv/laboratoire-interdisciplinaire-des-energies-de-demain/</p>
+
+<p><img src="images/AnVoQuang_image.png" alt="">{width=”6.479166666666667in” height=”2.15625in”}</p>
+
+<p>Figure : un faible effort de photo-interprétation pour la production de
+cartes de forêts dégradées.</p>
+
+<ol>
+  <li>Contexte</li>
+</ol>
+
+<blockquote>
+  <p>Les travaux de la thèse CIFRE ont été réalisés dans le cadre d'un
+partenariat entre l'Institut interdisciplinaire de recherche en
+énergie de Paris (LIED) et IGN FI, une société d'ingénierie
+géographique (partenaire export de l'IGN - Institut national de
+l’information géographique et forestière) qui réalise des projets sur
+tous les continents et dans tous les domaines d'application de la
+géomatique, notamment l'aménagement du territoire, l'environnement,
+l'agriculture, l'administration foncière ou la gestion des risques.
+Plus spécifiquement, les travaux de thèse se sont intégrés au projet
+de Zonage Agro-Ecologique de Guinée (ZAEG) coordonné par IGN FI et
+financé par l'Agence Française de Développement (AFD) pour le
+ministère de l’Agriculture de Guinée.</p>
+
+  <p>Contrairement à la déforestation, la dégradation forestière implique
+un changement de la structure forestière sans modification de
+l'utilisation du sol. Ce changement est subtil et moins visible que
+la déforestation. La dégradation des forêts est une préoccupation
+majeure car un potentiel de séquestration du carbone est perdu. Ce
+phénomène varie en fonction de l'emplacement géographique, des
+facteurs anthropiques, du climat, des types de forêts impactées, donc
+il n'existe pas de méthodologie de détection unique pour
+cartographier la dégradation des forêts à l'échelle mondiale.</p>
+
+  <p>En Guinée, le principal processus de dégradation est l'exploitation
+forestière sélective dans la forêt de massif, en plus de la
+fragmentation de la forêt causée par le changement d'utilisation des
+terres.</p>
+
+  <p>L’objectif est d’optimiser les méthodes de photo-interprétation
+utilisées par IGN FI pour détecter les zones de forêt dégradée. Le
+suivi du couvert forestier à l'aide des méthodes traditionnelles de
+télédétection nécessite un coût important en termes d'expertise en
+photo-interprétation. Nous proposons une approche de suivi par une
+procédure de classification semi-automatisée avec un coût de
+photo-interprétation minimum en incluant le contexte pixellaire, en
+intégrant les données du capteur Sentinel-2, acquises de manière
+répétitive.</p>
+</blockquote>
+
+<ol>
+  <li>Partie principale (Données/Méthodes/Expérimentation)</li>
+</ol>
+
+<blockquote>
+  <p>Les travaux de thèse proposent une procédure de détection des forêts
+dégradées à l'aide de l'imagerie multispectrale Sentinel-2 en
+Guinée, en Afrique de l'Ouest, notamment une série temporelle de 23
+images Sentinel-2 acquises de 2015 à 2020.</p>
+
+  <p>Des indices radiométriques sont dérivés des réflectances Sentinel-2.
+Leurs séries temporelles montrent que ceux liés à l'humidité (Canopy
+Water Content CWC, Moisture Stress Index MSI), associés à l'indice de
+surface foliaire (LAI), sont fortement liés au degré de dégradation,
+car ils sont liés à la dessiccation du feuillage de la canopée.</p>
+
+  <p>Des méthodologies de classification sont établies impliquant ces
+indices LAI, MSI et CWC. Deux types de classification sont comparés :
+une classification standard basée sur les pixels et une méthode de
+classification prenant en compte des informations contextuelles en
+incluant les valeurs de pixels voisins dans l'algorithme. La dernière
+méthode montre de meilleurs scores de précision et les résultats
+cartographiques ont été validés à l'aide d'un ensemble
+d'observations de terrain réalisées avec un forestier local. Mais la
+méthode contextuelle ne peut pas se passer d’une part de
+photo-interprétation. Cette part est réduite puisque l’interprétation
+visuelle de 5% de la surface de l’image suffit à étalonner la méthode
+semi-automatisée, ce qui correspond à une nette avancée par rapport
+aux méthodes existantes utilisées dans les projets internationaux de
+certification de l’état des forêts tropicales.</p>
+
+  <p>L'inclusion de pixels voisins dans le processus de classification
+conduit à une forte amélioration des résultats, ce qui peut refléter
+le fait que le contexte est le critère principal des méthodes basées
+sur la photo-interprétation pour détecter les forêts dégradées.</p>
+
+  <p>Une autre méthode utilisant le contexte a donc été développée basée
+sur l’intelligence artificielle, afin de s’affranchir du besoin de
+photo-interprétation. Au vu des résultats obtenus avec la méthode
+contextuelle, il nous a paru évident d’essayer des méthodes de Deep
+Learning (DL). Comme pour le Random Forest, les classifications sont
+faites sur une seule photo avec le DL. En revanche dans le cas du DL,
+l'entraînement se fait sur des séries d'images (sur plusieurs
+endroits, à plusieurs époques). L'entraînement se fait donc sur de
+plus grandes quantités de données et plus la quantité de données est
+élevée, plus les modèles sont capables de reconnaître une plus grande
+variabilité dans les paysages et les saisons. Notre modèle est un UNET
+adapté à une utilisation avec des images à 13 bandes. Ce réseau, étant
+convolutionnel de bout en bout, peut accepter en entrée des images de
+toutes tailles. Il repose sur la segmentation sémantique, qui associe
+une catégorie à chaque pixel d'une image.</p>
+
+  <p>La tâche la plus chronophage a été de constituer un dataset assez
+volumineux pour entraîner notre UNET adapté. Les tâches de DL, de par
+les architectures des réseaux et le nombre de paramètres à entraîner
+requièrent des quantités phénoménales de données pour atteindre les
+résultats souhaités. Le fait que la tâche soit de la segmentation
+n’arrange rien au problème. Finalement le dataset d'entraînement
+contenait plus de 39000 km2 labellisés sur jusqu’à trois années sur
+certaines régions, afin de permettre au modèle de faire la différence
+entre les changements saisonniers et naturels.</p>
+
+  <p>Ce modèle a été testé entre autres sur Nimba, une zone montagneuse
+boisée à l’extrémité sud de la Guinée, à la frontière de la Côte
+d’Ivoire. Le modèle de Deep Learning parvient à inférer sur cette zone
+forestière sur laquelle il ne s’est pas entraîné, sur des images
+acquises en 2020 (mois de décembre). Afin d’évaluer la qualité et la
+performance du modèle, une carte de référence a permis de produire les
+matrices de confusion et métriques kappa. Les taux de réussite sont de
+95% en moyenne sur les trois zones testées en Guinée.</p>
+
+  <p>L’ensemble de ces recherches présente une base solide pour les
+opérateurs nationaux lors de l’étape de vectorisation et un grand
+soutien pour la procédure de photo-interprétation pour une production
+de cartes moins longue et coûteuse, offrant des bases importantes pour
+la délimitation des forêts dégradées dans des régions présentant des
+conditions similaires de forêts dégradées.</p>
+</blockquote>
+
+<ol>
+  <li>Bibliographie</li>
+</ol>
+
+<blockquote>
+  <p>Articles:</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>Bruno Smets, Marcel Buchhorn, Gabriel Jaffrain, Marian-Daniel
+Iordache, Niels Souverijns, Adrien Moiret, An Vo Quang, Myroslava
+Lesiv, Nandin-Erdene Tsendbaza (2020). Elastic mapping through the
+Copernicus Global Land Cover layers. IGARSS (submitted).</p>
+  </li>
+  <li>
+    <p>Jaffrain, G., Leroux, A., Vo Quang, A., Pinet, C., Dessagboli, B.,
+Gauthier, Y., &amp; Moiret, A. (2021). Suivi de la dynamique de
+l’occupation du sol en République de Guinée par imagerie
+satellitaire Spot: Transfert technologique pour le développement
+d’outils performants d’aide à la décision. Revue Française De
+Photogrammétrie Et De Télédétection, 223, 59–80.
+https://doi.org/10.52638/rfpt.2021.563</p>
+  </li>
+  <li>
+    <p>Giraldo, C., Boutoute, M., Mayzaud, P., Tavernier, E., Vo Quang, A.,
+&amp; Koubbi, P. (2017). Lipid dynamics in early life stages of the
+icefish Chionodraco hamatus in the Dumont d’Urville Sea (East
+Antarctica). Polar Biology, 40(2), 313-320.</p>
+  </li>
+</ul>
+
+<p>Posters:</p>
+
+<ul>
+  <li>
+    <p>Vo Quang A., Jaffrain G., Delbart N. The challenge of mapping forest
+cover changes: forest degradation detection by optical remote
+sensing time series analysis (2019) Geophysical Research Vol. 21,
+EGU2019, EGU General Assembly 2019</p>
+  </li>
+  <li>
+    <p>Vo Quang A., Giraldo C., Tavernier E., Koubbi P., Mayzaud P. Lipid
+dynamics in early life stages in the icefish Chionodraco sp. in East
+Antarctica (2014) Poster, SCAR Open Science Conference, New Zealand.</p>
+  </li>
+</ul>
+
+<ol>
+  <li>Contact</li>
+</ol>
+
+<blockquote>
+  <p>avoquang\@ignfi.fr</p>
+</blockquote>
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="rfpt-sfpt/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/sentinel-2/s%C3%A9rie%20temporelle/deep%20learning/classification%20supervis%C3%A9e/d%C3%A9gradation%20foresti%C3%A8re/afrique%20de%20l'ouest/2021/10/11/An-VO-QUANG-LIED.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>RFPT blog on students&#39; research projects</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/rfpt-sfpt" title="rfpt-sfpt"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/rfpt_journal" title="rfpt_journal"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
