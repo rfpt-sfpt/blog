@@ -130,7 +130,13 @@ window.onload = wrap_img;
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
 <li class="toc-entry toc-h1"><a href="#contexte">Contexte</a></li>
-<li class="toc-entry toc-h1"><a href="#partie-principale-donnéesméthodesexpérimentation">Partie principale (Données/Méthodes/Expérimentation)</a></li>
+<li class="toc-entry toc-h1"><a href="#méthodologies">Méthodologies</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#dataset">Dataset</a></li>
+<li class="toc-entry toc-h2"><a href="#evaluation">Evaluation</a></li>
+<li class="toc-entry toc-h2"><a href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h1"><a href="#bibliographie">Bibliographie</a></li>
 <li class="toc-entry toc-h1"><a href="#communication-poster">Communication poster:</a></li>
 <li class="toc-entry toc-h1"><a href="#contact">Contact</a></li>
@@ -182,8 +188,8 @@ cartes de forêts dégradées.</p>
  intégrant les données du capteur Sentinel-2, acquises de manière
  répétitive.</p>
 
-<h1 id="partie-principale-donnéesméthodesexpérimentation">
-<a class="anchor" href="#partie-principale-donn%C3%A9esm%C3%A9thodesexp%C3%A9rimentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Partie principale (Données/Méthodes/Expérimentation)</h1>
+<h1 id="méthodologies">
+<a class="anchor" href="#m%C3%A9thodologies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Méthodologies</h1>
 
 <p>Les travaux de thèse proposent une procédure de détection des forêts
  dégradées à l'aide de l'imagerie multispectrale Sentinel-2 en
@@ -232,6 +238,8 @@ cartes de forêts dégradées.</p>
  toutes tailles. Il repose sur la segmentation sémantique, qui associe
  une catégorie à chaque pixel d'une image.</p>
 
+<h2 id="dataset">
+<a class="anchor" href="#dataset" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dataset</h2>
 <p>La tâche la plus chronophage a été de constituer un dataset assez
  volumineux pour entraîner notre UNET adapté. Les tâches de DL, de par
  les architectures des réseaux et le nombre de paramètres à entraîner
@@ -242,6 +250,8 @@ cartes de forêts dégradées.</p>
  certaines régions, afin de permettre au modèle de faire la différence
  entre les changements saisonniers et naturels.</p>
 
+<h2 id="evaluation">
+<a class="anchor" href="#evaluation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Evaluation</h2>
 <p>Ce modèle a été testé entre autres sur Nimba, une zone montagneuse
  boisée à l’extrémité sud de la Guinée, à la frontière de la Côte
  d’Ivoire. Le modèle de Deep Learning parvient à inférer sur cette zone
@@ -251,6 +261,8 @@ cartes de forêts dégradées.</p>
  matrices de confusion et métriques kappa. Les taux de réussite sont de
  95% en moyenne sur les trois zones testées en Guinée.</p>
 
+<h2 id="conclusion">
+<a class="anchor" href="#conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion</h2>
 <p>L’ensemble de ces recherches présente une base solide pour les
  opérateurs nationaux lors de l’étape de vectorisation et un grand
  soutien pour la procédure de photo-interprétation pour une production
