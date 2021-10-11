@@ -15,9 +15,9 @@ LIED (Laboratoire Interdisciplinaire des Energies de Demain) :
 https://u-paris.fr/sdv/laboratoire-interdisciplinaire-des-energies-de-demain/
 
 
-![](images/AnVoQuang_image.png)
-Figure : un faible effort de photo-interprétation pour la production de
-cartes de forêts dégradées.
+![]({{ site.baseurl }}/images/AnVoQuang_image.png "Figure : un faible effort de photo-interprétation pour la production de
+cartes de forêts dégradées.")
+
 
 
 # Contexte
@@ -160,14 +160,14 @@ Articles:
     icefish Chionodraco hamatus in the Dumont d'Urville Sea (East
     Antarctica). Polar Biology, 40(2), 313-320.
 
-# Communication poster:
+# Communication
 
--   Vo Quang A., Jaffrain G., Delbart N. The challenge of mapping forest
+-   (poster) Vo Quang A., Jaffrain G., Delbart N. The challenge of mapping forest
     cover changes: forest degradation detection by optical remote
     sensing time series analysis (2019) Geophysical Research Vol. 21,
     EGU2019, EGU General Assembly 2019
 
--   Vo Quang A., Giraldo C., Tavernier E., Koubbi P., Mayzaud P. Lipid
+-   (poster) Vo Quang A., Giraldo C., Tavernier E., Koubbi P., Mayzaud P. Lipid
     dynamics in early life stages in the icefish Chionodraco sp. in East
     Antarctica (2014) Poster, SCAR Open Science Conference, New Zealand.
 
