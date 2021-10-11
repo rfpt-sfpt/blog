@@ -11,8 +11,7 @@ description: "Evaluation de l'apport potentiel des nouveaux capteurs satellitair
 title: "Détection des forêts dégradées en Guinée à partir des images satellites Sentinel-2" 
 ---
 
-LIED (Laboratoire Interdisciplinaire des Energies de Demain) :
-https://u-paris.fr/sdv/laboratoire-interdisciplinaire-des-energies-de-demain/
+[LIED (Laboratoire Interdisciplinaire des Energies de Demain)](https://u-paris.fr/sdv/laboratoire-interdisciplinaire-des-energies-de-demain/)
 
 
 ![]({{ site.baseurl }}/images/AnVoQuang_image.png "Figure : un faible effort de photo-interprétation pour la production de
@@ -143,11 +142,11 @@ cartes de forêts dégradées.")
 ## Articles
 
 -   Bruno Smets, Marcel Buchhorn, Gabriel Jaffrain, Marian-Daniel
-    Iordache, Niels Souverijns, Adrien Moiret, An Vo Quang, Myroslava
+    Iordache, Niels Souverijns, Adrien Moiret, ***An Vo Quang***, Myroslava
     Lesiv, Nandin-Erdene Tsendbaza (2020). Elastic mapping through the
     Copernicus Global Land Cover layers. IGARSS (submitted).
 
--   Jaffrain, G., Leroux, A., Vo Quang, A., Pinet, C., Dessagboli, B.,
+-   Jaffrain, G., Leroux, A., ***Vo Quang, A.***, Pinet, C., Dessagboli, B.,
     Gauthier, Y., & Moiret, A. (2021). Suivi de la dynamique de
     l'occupation du sol en République de Guinée par imagerie
     satellitaire Spot: Transfert technologique pour le développement
@@ -155,23 +154,23 @@ cartes de forêts dégradées.")
     Photogrammétrie Et De Télédétection, 223, 59--80.
     https://doi.org/10.52638/rfpt.2021.563
 
--   Giraldo, C., Boutoute, M., Mayzaud, P., Tavernier, E., Vo Quang, A.,
+-   Giraldo, C., Boutoute, M., Mayzaud, P., Tavernier, E., ***Vo Quang, A.***,
     & Koubbi, P. (2017). Lipid dynamics in early life stages of the
     icefish Chionodraco hamatus in the Dumont d'Urville Sea (East
     Antarctica). Polar Biology, 40(2), 313-320.
 
-## Poster
+## Posterd
 
--   (poster) Vo Quang A., Jaffrain G., Delbart N. The challenge of mapping forest
+-   (poster) ***Vo Quang A.***, Jaffrain G., Delbart N. The challenge of mapping forest
     cover changes: forest degradation detection by optical remote
     sensing time series analysis (2019) Geophysical Research Vol. 21,
     EGU2019, EGU General Assembly 2019
 
--   (poster) Vo Quang A., Giraldo C., Tavernier E., Koubbi P., Mayzaud P. Lipid
+-   (poster) ***Vo Quang A.***, Giraldo C., Tavernier E., Koubbi P., Mayzaud P. Lipid
     dynamics in early life stages in the icefish Chionodraco sp. in East
     Antarctica (2014) Poster, SCAR Open Science Conference, New Zealand.
 
 #  Contact
 
-> avoquang\@ignfi.fr
+> avoquang@ignfi.fr
 
