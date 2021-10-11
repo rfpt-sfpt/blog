@@ -140,7 +140,7 @@ cartes de forêts dégradées.")
 
 # Bibliographie
 
-Articles:
+## Articles
 
 -   Bruno Smets, Marcel Buchhorn, Gabriel Jaffrain, Marian-Daniel
     Iordache, Niels Souverijns, Adrien Moiret, An Vo Quang, Myroslava
@@ -160,7 +160,7 @@ Articles:
     icefish Chionodraco hamatus in the Dumont d'Urville Sea (East
     Antarctica). Polar Biology, 40(2), 313-320.
 
-# Communication
+## Poster
 
 -   (poster) Vo Quang A., Jaffrain G., Delbart N. The challenge of mapping forest
     cover changes: forest degradation detection by optical remote
