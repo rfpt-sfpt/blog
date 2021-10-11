@@ -14,7 +14,7 @@ title: "Détection des forêts dégradées en Guinée à partir des images satel
 Les travaux de recherche presentés en-dessous ont été menés au sein du [*Laboratoire Interdisciplinaire des Energies de Demain* (LIED)](https://u-paris.fr/sdv/laboratoire-interdisciplinaire-des-energies-de-demain/)
 
 
-![]({{ site.baseurl }}/images/AnVoQuang_image.png "Figure : un faible effort de photo-interprétation pour la production de
+![]({{ site.baseurl }}/images/AnVoQuang_image.png "Figure. Un faible effort de photo-interprétation pour la production de
 cartes de forêts dégradées.")
 
 
