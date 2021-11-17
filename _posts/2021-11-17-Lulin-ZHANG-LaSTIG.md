@@ -108,7 +108,6 @@ To increase the robustness of our correspondences, we do the following:
 
 However, we also considered using orthophotos for the rough co-registration stage. Experiments have demonstrated that fewer matches can be retrieved. This is due to the fact that the scene's radiometry changes are more pronounced than the 3D landscape's evolution. Figure 7 presents a comparison of feature matching performed on RGB images and DSMs (more inliers in DSMs). It also shows the effectiveness of our strategy (SuperGlue combined with tiling scheme, followed by RANSAC) compared to the traditional SuperGlue.
 
-
 | (a) Multi-epoch orthophoto pair | (b) Multi-epoch DSM pair |
 |-|-|
 | <img src="/blog/images/DOMoverlapping.png" width="600"> | <img src="/blog/images/DSMoverlapping.png" width="600"> |
@@ -117,9 +116,10 @@ However, we also considered using orthophotos for the rough co-registration stag
 | (e) Our correspondences on orthophotos | (f) Our correspondences on DSMs |
 | <img src="/blog/images/DOM-Ours.png" width="600"> | <img src="/blog/images/DSM-Ours.png" width="600"> |
 
+ 
 Figure 7. Comparison of co-registration with orthophotos and DSMs. (a-b) Red rectangles indicate the overlapping area.
 
- > Note: For more details, please refer to our publication [^3].
+> Note: For more details, please refer to our publication [^3].
 
 ## Precise matching
 
