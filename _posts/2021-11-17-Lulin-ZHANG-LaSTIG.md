@@ -50,10 +50,10 @@ The key idea of our method is to use 3D geometry to guide matching. This idea co
 
  Figure 2. The same zone observed in different times. The images changed a lot while the DSMs stayed stable over time.  
 
-|      (e) Image 1991  |          (f) Image 1994   |
+|      (a) Image 1991  |          (b) Image 1994   |
 |-|-|
 |  <img src="/blog/images/PoorlyTexturedRGBL.png" width="300">  |  <img src="/blog/images/PoorlyTexturedRGBR.png" width="300">  |
-|      (g) DSM 1991  |          (h) DSM 1994   |
+|      (c) DSM 1991  |          (d) DSM 1994   |
 |  <img src="/blog/images/PoorlyTexturedDSML.png" width="300">  |  <img src="/blog/images/PoorlyTexturedDSMR.png" width="300">  |
 
  Figure 3. The same vegetation observed in different times. They present non-Lambertian reflection and self similarities, while the DSMs are distinctive.  
@@ -109,12 +109,12 @@ To increase the robustness of our correspondences, we do the following:
 However, we also considered using orthophotos for the rough co-registration stage. Experiments have demonstrated that fewer matches can be retrieved. This is due to the fact that the scene's radiometry changes are more pronounced than the 3D landscape's evolution. Figure 7 presents a comparison of feature matching performed on RGB images and DSMs (more inliers in DSMs). It also shows the effectiveness of our strategy (SuperGlue combined with tiling scheme, followed by RANSAC) compared to the traditional SuperGlue.
 
 
-|(a) Multi-epoch orthophoto pair|(b) Multi-epoch DSM pair|
+| (a) Multi-epoch orthophoto pair | (b) Multi-epoch DSM pair |
 |-|-|
-| <img src="/blog/images/DOMoverlapping.png" width="600">| <img src="/blog/images/DSMoverlapping.png" width="600">|
-|(c) SuperGlue correspondences on orthophotos|(d) SuperGlue correspondences on DSMs|
+| <img src="/blog/images/DOMoverlapping.png" width="600"> | <img src="/blog/images/DSMoverlapping.png" width="600"> |
+| (c) SuperGlue correspondences on orthophotos | (d) SuperGlue correspondences on DSMs |
 | <img src="/blog/images/DOM-SuperGlue.jpg" width="600"> | <img src="/blog/images/DSM-SuperGlue.png" width="600"> |
-|(e) Our correspondences on orthophotos|(f) Our correspondences on DSMs|
+| (e) Our correspondences on orthophotos | (f) Our correspondences on DSMs |
 | <img src="/blog/images/DOM-Ours.png" width="600"> | <img src="/blog/images/DSM-Ours.png" width="600"> |
 Figure 7. Comparison of co-registration with orthophotos and DSMs. (a-b) Red rectangles indicate the overlapping area.
 
