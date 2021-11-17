@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Lulin Zhang, Ewelina Rupnik, Marc Pierrot-Deseilligny
-image: images/LulinZhang_teaser.png
+image: images/LulinZhang_teaser.jpg
 toc: true
 badges: true
 comments: true
