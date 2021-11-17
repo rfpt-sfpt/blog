@@ -97,7 +97,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      11 min read
+      10 min read
     
 </span></p>
 
@@ -147,12 +147,6 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#conclusion">Conclusion</a></li>
-<li class="toc-entry toc-h1"><a href="#lesson-learned">Lesson learned</a>
-<ul>
-<li class="toc-entry toc-h2"><a href="#it-is-useful-to-adopt-a-priori-to-reduce-ambiguity">It is useful to adopt a priori to reduce ambiguity.</a></li>
-<li class="toc-entry toc-h2"><a href="#deep-learning-feature-matching-methods-underperform-on-high-resolution-images-it-can-be-improved-with-tiling-scheme">Deep learning feature matching methods underperform on high resolution images, it can be improved with tiling scheme.</a></li>
-</ul>
-</li>
 <li class="toc-entry toc-h1"><a href="#contact">Contact</a></li>
 <li class="toc-entry toc-h1"><a href="#reference">Reference</a></li>
 </ul><blockquote>
@@ -485,35 +479,6 @@ We have two sets of images: pre-event acquired in 1991 and post-event acquired i
 <a class="anchor" href="#conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion</h1>
 
 <p>Our method exploited rough-to-precise matching strategy to reduce ambiguity with the help of the depth information. We also introduced a tiling scheme to upscale the learning-based feature extractors to high-resolution imagery, and enhanced the matching robustness by removing scale and rotation ambiguities. Experiments showed that our method is able to mitigate systematic errors induced by poorly estimated camera, and it is robust to drastic scene changes.</p>
-
-<h1 id="lesson-learned">
-<a class="anchor" href="#lesson-learned" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lesson learned</h1>
-
-<h2 id="it-is-useful-to-adopt-a-priori-to-reduce-ambiguity">
-<a class="anchor" href="#it-is-useful-to-adopt-a-priori-to-reduce-ambiguity" aria-hidden="true"><span class="octicon octicon-link"></span></a>It is useful to adopt <em>a priori</em> to reduce ambiguity.</h2>
-
-<p>As multi-epoch images often display very different appearance, it helps to exploit <em>a priori</em> (e.g. depth information extracted from single epoch) to narrow down the searching space. The <em>a priori</em> could be used in as many ways as possible. There are at least 3 ways to take advantage of the depth information:</p>
-<ul>
-  <li>matching depth images for rough co-reigstration.</li>
-  <li>use co-registered depth information to handle scale and rotation difference in 2 ways: (1) for deep learning matching methods such as SuperGlue, get patch pairs free of scale and rotation difference; (2) for hand-crafted mehtods such as SIFT, reject candidate matches whose scales and rotations computed by
-SIFT are incoherent with prediction by depth.</li>
-  <li>filter candidate matches by projecting them onto depth to get 3D points, followed by running RANSAC on 3D Helmert transformation model.</li>
-</ul>
-
-<h2 id="deep-learning-feature-matching-methods-underperform-on-high-resolution-images-it-can-be-improved-with-tiling-scheme">
-<a class="anchor" href="#deep-learning-feature-matching-methods-underperform-on-high-resolution-images-it-can-be-improved-with-tiling-scheme" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deep learning feature matching methods underperform on high resolution images, it can be improved with tiling scheme.</h2>
-
-<p>Deep learning feature matching methods often provide inaccurate features for different reasons:</p>
-<ul>
-  <li>network trained on small images in order to perform in real-time, for example SuperGlue;</li>
-  <li>features extracted on CNN feature maps with limited spatial resolution, for example D2-Net.</li>
-</ul>
-
-<p>We can obtain accurate features on high resolution images by tiling the input images, and matching the tile pairs in 2 possible ways:</p>
-<ul>
-  <li>If no <em>a priori</em> is available, it is neccessary to match all the potential tile pairs;</li>
-  <li>If <em>a priori</em> is available (e.g. the depths are roughly co-registered), it can be used to predict the tile from one image to another.</li>
-</ul>
 
 <h1 id="contact">
 <a class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h1>
