@@ -116,6 +116,7 @@ However, we also considered using orthophotos for the rough co-registration stag
 | <img src="/blog/images/DOM-SuperGlue.jpg" width="600"> | <img src="/blog/images/DSM-SuperGlue.png" width="600"> |
 | (e) Our correspondences on orthophotos | (f) Our correspondences on DSMs |
 | <img src="/blog/images/DOM-Ours.png" width="600"> | <img src="/blog/images/DSM-Ours.png" width="600"> |
+
 Figure 7. Comparison of co-registration with orthophotos and DSMs. (a-b) Red rectangles indicate the overlapping area.
 
  > Note: For more details, please refer to our publication [^3].
