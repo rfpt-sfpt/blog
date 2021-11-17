@@ -263,26 +263,6 @@ Figure 17. Groud displacement
 
 Our method exploited rough-to-precise matching strategy to reduce ambiguity with the help of the depth information. We also introduced a tiling scheme to upscale the learning-based feature extractors to high-resolution imagery, and enhanced the matching robustness by removing scale and rotation ambiguities. Experiments showed that our method is able to mitigate systematic errors induced by poorly estimated camera, and it is robust to drastic scene changes.
 
-# Lesson learned
-
-## It is useful to adopt *a priori* to reduce ambiguity.
-
-As multi-epoch images often display very different appearance, it helps to exploit *a priori* (e.g. depth information extracted from single epoch) to narrow down the searching space. The *a priori* could be used in as many ways as possible. There are at least 3 ways to take advantage of the depth information:
-* matching depth images for rough co-reigstration.
-* use co-registered depth information to handle scale and rotation difference in 2 ways: (1) for deep learning matching methods such as SuperGlue, get patch pairs free of scale and rotation difference; (2) for hand-crafted mehtods such as SIFT, reject candidate matches whose scales and rotations computed by
-SIFT are incoherent with prediction by depth.
-* filter candidate matches by projecting them onto depth to get 3D points, followed by running RANSAC on 3D Helmert transformation model.
-
-## Deep learning feature matching methods underperform on high resolution images, it can be improved with tiling scheme.
-
-Deep learning feature matching methods often provide inaccurate features for different reasons:
-* network trained on small images in order to perform in real-time, for example SuperGlue;
-* features extracted on CNN feature maps with limited spatial resolution, for example D2-Net.
-
-We can obtain accurate features on high resolution images by tiling the input images, and matching the tile pairs in 2 possible ways:
-* If no *a priori* is available, it is neccessary to match all the potential tile pairs;
-* If *a priori* is available (e.g. the depths are roughly co-registered), it can be used to predict the tile from one image to another.
-
 #  Contact
 
 > lulin.zhang.whu@gmail.com
