@@ -149,8 +149,8 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h1"><a href="#conclusion">Conclusion</a></li>
 <li class="toc-entry toc-h1"><a href="#lesson-learned">Lesson learned</a>
 <ul>
-<li class="toc-entry toc-h2"><a href="#1-it-is-useful-to-adopt-a-priori-to-reduce-ambiguity">1. It is useful to adopt a priori to reduce ambiguity.</a></li>
-<li class="toc-entry toc-h2"><a href="#2-deep-learning-feature-matching-methods-underperform-on-high-resolution-images-it-can-be-improved-with-tiling-scheme">2. Deep learning feature matching methods underperform on high resolution images, it can be improved with tiling scheme.</a></li>
+<li class="toc-entry toc-h2"><a href="#it-is-useful-to-adopt-a-priori-to-reduce-ambiguity">It is useful to adopt a priori to reduce ambiguity.</a></li>
+<li class="toc-entry toc-h2"><a href="#deep-learning-feature-matching-methods-underperform-on-high-resolution-images-it-can-be-improved-with-tiling-scheme">Deep learning feature matching methods underperform on high resolution images, it can be improved with tiling scheme.</a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#contact">Contact</a></li>
@@ -465,8 +465,8 @@ We have two sets of images: pre-event acquired in 1991 and post-event acquired i
 <h1 id="lesson-learned">
 <a class="anchor" href="#lesson-learned" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lesson learned</h1>
 
-<h2 id="1-it-is-useful-to-adopt-a-priori-to-reduce-ambiguity">
-<a class="anchor" href="#1-it-is-useful-to-adopt-a-priori-to-reduce-ambiguity" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. It is useful to adopt <em>a priori</em> to reduce ambiguity.</h2>
+<h2 id="it-is-useful-to-adopt-a-priori-to-reduce-ambiguity">
+<a class="anchor" href="#it-is-useful-to-adopt-a-priori-to-reduce-ambiguity" aria-hidden="true"><span class="octicon octicon-link"></span></a>It is useful to adopt <em>a priori</em> to reduce ambiguity.</h2>
 
 <p>As multi-epoch images often display very different appearance, it helps to exploit <em>a priori</em> (e.g. depth information extracted from single epoch) to narrow down the searching space. The <em>a priori</em> could be used in as many ways as possible. There are at least 3 ways to take advantage of the depth information:</p>
 <ul>
@@ -476,8 +476,8 @@ SIFT are incoherent with prediction by depth.</li>
   <li>filter candidate matches by projecting them onto depth to get 3D points, followed by running RANSAC on 3D Helmert transformation model.</li>
 </ul>
 
-<h2 id="2-deep-learning-feature-matching-methods-underperform-on-high-resolution-images-it-can-be-improved-with-tiling-scheme">
-<a class="anchor" href="#2-deep-learning-feature-matching-methods-underperform-on-high-resolution-images-it-can-be-improved-with-tiling-scheme" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Deep learning feature matching methods underperform on high resolution images, it can be improved with tiling scheme.</h2>
+<h2 id="deep-learning-feature-matching-methods-underperform-on-high-resolution-images-it-can-be-improved-with-tiling-scheme">
+<a class="anchor" href="#deep-learning-feature-matching-methods-underperform-on-high-resolution-images-it-can-be-improved-with-tiling-scheme" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deep learning feature matching methods underperform on high resolution images, it can be improved with tiling scheme.</h2>
 
 <p>Deep learning feature matching methods often provide inaccurate features for different reasons:</p>
 <ul>
