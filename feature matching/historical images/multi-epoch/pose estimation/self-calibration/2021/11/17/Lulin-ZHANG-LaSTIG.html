@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Feature matching for multi-epoch historical aerial images | Revue française de photogrammétrie et de Télédétection</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Feature matching for multi-epoch historical aerial images" />
+<meta name="author" content="Lulin Zhang, Ewelina Rupnik, Marc Pierrot-Deseilligny" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Feature matching for multi-epoch historical aerial images" />
+<meta property="og:description" content="Feature matching for multi-epoch historical aerial images" />
+<link rel="canonical" href="https://rfpt-sfpt.github.io/blog/feature%20matching/historical%20images/multi-epoch/pose%20estimation/self-calibration/2021/11/17/Lulin-ZHANG-LaSTIG.html" />
+<meta property="og:url" content="https://rfpt-sfpt.github.io/blog/feature%20matching/historical%20images/multi-epoch/pose%20estimation/self-calibration/2021/11/17/Lulin-ZHANG-LaSTIG.html" />
+<meta property="og:site_name" content="Revue française de photogrammétrie et de Télédétection" />
+<meta property="og:image" content="https://rfpt-sfpt.github.io/blog/images/LulinZhang_teaser.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-11-17T00:00:00-06:00" />
+<script type="application/ld+json">
+{"url":"https://rfpt-sfpt.github.io/blog/feature%20matching/historical%20images/multi-epoch/pose%20estimation/self-calibration/2021/11/17/Lulin-ZHANG-LaSTIG.html","@type":"BlogPosting","headline":"Feature matching for multi-epoch historical aerial images","dateModified":"2021-11-17T00:00:00-06:00","datePublished":"2021-11-17T00:00:00-06:00","image":"https://rfpt-sfpt.github.io/blog/images/LulinZhang_teaser.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://rfpt-sfpt.github.io/blog/feature%20matching/historical%20images/multi-epoch/pose%20estimation/self-calibration/2021/11/17/Lulin-ZHANG-LaSTIG.html"},"author":{"@type":"Person","name":"Lulin Zhang, Ewelina Rupnik, Marc Pierrot-Deseilligny"},"description":"Feature matching for multi-epoch historical aerial images","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://rfpt-sfpt.github.io/blog/feed.xml" title="Revue française de photogrammétrie et de Télédétection" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Revue française de photogrammétrie et de Télédétection</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Feature matching for multi-epoch historical aerial images</h1><p class="page-description">Feature matching for multi-epoch historical aerial images</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-11-17T00:00:00-06:00" itemprop="datePublished">
+        Nov 17, 2021
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Lulin Zhang, Ewelina Rupnik, Marc Pierrot-Deseilligny</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      12 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#Feature matching">Feature matching</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#Historical images">Historical images</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#Multi-epoch">Multi-epoch</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#Pose estimation">Pose estimation</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#Self-calibration">Self-calibration</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#introduction">Introduction</a></li>
+<li class="toc-entry toc-h1"><a href="#observation-and-motivation">Observation and motivation</a></li>
+<li class="toc-entry toc-h1"><a href="#methodology">Methodology</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#rough-co-registration">Rough co-registration</a></li>
+</ul>
+</li>
+</ul><blockquote>
+  <p>This research was carried out within the <a href="https://www.umr-lastig.fr/">LaSTIG lab., IGN-ENSG, Univ. Gustave Eiffel.</a></p>
+</blockquote>
+
+<h1 id="introduction">
+<a class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h1>
+
+<p>Historical imagery is characterized by high spatial resolution and stereoscopic acquisitions, providing a valuable resource for recovering 3D land-cover information. Accurate geo-referencing of diachronic historical images by means of self-calibration remains a bottleneck because of the difficulty to find sufficient amount of feature correspondences under evolving landscapes. As shown in Figure 1 (c-d), current <em>state-of-the-art</em> feature matching methods (including SIFT [^1] and SuperGlue [^2]) perfom well on images acquired within the same epoch (also refered to as intra-epoch). Yet, due to drastic scene changes and heterogeneous acquisition conditions, they underperform to find feature correspondences across different epochs (also referred to as inter-epoch) Figure 1 (e-f), while our method [^3] is able to recover numerous and accurate correspondences Figure 1 (g).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>(a) Intra-epoch image pair</th>
+      <th>(b) Inter-epoch image pair</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&lt;p align="center"&gt; <img src="images/intra.png" width="400"> &lt;/p&gt;</td>
+      <td>&lt;p align="center"&gt; <img src="images/Homol-SIFT-3DRANSAC-CrossCorrelation_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1954-03-06__C3544-0211_1954_CDP866_0632.tif.png" width="400"> &lt;/p&gt;</td>
+    </tr>
+    <tr>
+      <td>&lt;p align="center"&gt;   (c) <strong><em>SIFT</em></strong> : good correspondences &lt;/p&gt;</td>
+      <td>&lt;p align="center"&gt;    (d) <strong><em>SIFT</em></strong> : 0 correspondences  &lt;/p&gt;</td>
+    </tr>
+    <tr>
+      <td>&lt;p align="center"&gt; <img src="images/Homol-SIFT_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="400"> &lt;/p&gt;</td>
+      <td>&lt;p align="center"&gt;  <img src="images/Homol-SIFT-3DRANSAC-CrossCorrelation_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1954-03-06__C3544-0211_1954_CDP866_0632.tif.png" width="400"> &lt;/p&gt;</td>
+    </tr>
+    <tr>
+      <td>&lt;p align="center"&gt;   (e) <strong><em>SuperGlue</em></strong> : good correspondences &lt;/p&gt;</td>
+      <td>&lt;p align="center"&gt;   (f) <strong><em>SuperGlue</em></strong> : inaccurate correspondences  &lt;/p&gt;</td>
+    </tr>
+    <tr>
+      <td>&lt;p align="center"&gt; <img src="images/Homol-SuperGlue_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="400"> &lt;/p&gt;</td>
+      <td>&lt;p align="center"&gt;  <img src="images/Selection_533.png" width="300"> &lt;/p&gt;</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>&lt;p align="center"&gt; (g) <strong><em>Ours</em></strong> : accurate correspondences &lt;/p&gt;</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>&lt;p align="center"&gt; <img src="images/Selection_534.png" width="300"> &lt;/p&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
+<p align="center"> Figure 1. SIFT, SuperGlue and Our features computed on an intra-epoch (left) and inter-epoch (right) image pair. The blue line connecting 2 points from the left and right images represent the feature correspondences. </p>
+
+<p>We propose a fully automatic approach to computing robust inter-epoch feature correspondences. Our method consists of two steps: a rough co-registration by finding feature correspondences between DSMs (Digital Surface Model) derived within single epochs, and a precise feature matching on original RGB images. Our main contributions include:</p>
+<ul>
+  <li>Rough-to-precise matching strategy that helps to drastically reduce ambiguity. In particular, we use the depth information to roughly co-register our epochs. The 3D landscape is globally stable over time and provides sufficient correspondences <em>through time</em>. Once co-registered, we levarage the 3D <em>a priori</em> to narrow down the search space in precise matching.</li>
+  <li>Upscaling of the learning based feature matching algorithms to high resolution imagery. To do that, we introduced an image tiling scheme.</li>
+</ul>
+
+<p>In the following we present the methodology and some experiments. If you are interested in using our method, please refer to the source code of MicMac Github [^4], as well as 2 jupyter tutorials [^5] [^6]. We also provide an introduction video [^7], slides [^9] and project website [^8]. The datasets used in our publication [^3] will be soon published in an open-access repository.</p>
+
+<h1 id="observation-and-motivation">
+<a class="anchor" href="#observation-and-motivation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Observation and motivation</h1>
+
+<p>The key idea of our method is to use 3D geometry to guide matching. This idea comes from the observation that RGB images have the following shortcomings:</p>
+<ol>
+  <li>Their appearances change over time (see Figure 2), and with varying view angles on non-Lambertian surfaces (see Figure 3).</li>
+  <li>Self similarities (e.g. repetitive patterns) favor false matches (see Figure 3).</li>
+</ol>
+
+<table>
+  <thead>
+    <tr>
+      <th>(a) Image 1971</th>
+      <th>(b) Image 2015</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&lt;p align="center"&gt; <img src="images/AppearanceChangeRGBL.png" width="300"> &lt;/p&gt;</td>
+      <td>&lt;p align="center"&gt; <img src="images/AppearanceChangeRGBR.png" width="300"> &lt;/p&gt;</td>
+    </tr>
+    <tr>
+      <td>&lt;p align="center"&gt;   (c) DSM 1971 &lt;/p&gt;</td>
+      <td>&lt;p align="center"&gt;    (d) DSM 2015  &lt;/p&gt;</td>
+    </tr>
+    <tr>
+      <td>&lt;p align="center"&gt; <img src="images/AppearanceChangeDSML.png" width="300"> &lt;/p&gt;</td>
+      <td>&lt;p align="center"&gt; <img src="images/AppearanceChangeDSMR.png" width="300"> &lt;/p&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
+<p align="center"> Figure 2. The same zone observed in different times. The images changed a lot while the DSMs stayed stable over time. </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>&lt;p align="center"&gt;   (e) Image 1991 &lt;/p&gt;</th>
+      <th>&lt;p align="center"&gt;    (f) Image 1994  &lt;/p&gt;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&lt;p align="center"&gt; <img src="images/PoorlyTexturedRGBL.png" width="300"> &lt;/p&gt;</td>
+      <td>&lt;p align="center"&gt; <img src="images/PoorlyTexturedRGBR.png" width="300"> &lt;/p&gt;</td>
+    </tr>
+    <tr>
+      <td>&lt;p align="center"&gt;   (g) DSM 1991 &lt;/p&gt;</td>
+      <td>&lt;p align="center"&gt;    (h) DSM 1994  &lt;/p&gt;</td>
+    </tr>
+    <tr>
+      <td>&lt;p align="center"&gt; <img src="images/PoorlyTexturedDSML.png" width="300"> &lt;/p&gt;</td>
+      <td>&lt;p align="center"&gt; <img src="images/PoorlyTexturedDSMR.png" width="300"> &lt;/p&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
+<p align="center"> Figure 3. The same vegetation observed in different times. They present non-Lambertian reflection and self similarities, while the DSMs are distinctive. </p>
+
+<p>Fortunately, 3D geometry such as DSM, makes up these shortcomings perfectly. Therefore, we designed a rough-to precise matching pipeline to take advantage of DSMs for multi-epoch image alignment by:</p>
+<ol>
+  <li>Matching DSM for rough co-registration;</li>
+  <li>Reducing ambiguity in precise matching.</li>
+</ol>
+
+<p>The details are presented in the next section.</p>
+
+<h1 id="methodology">
+<a class="anchor" href="#methodology" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methodology</h1>
+
+<p align="center">
+  <img src="images/flowchart.png" width="800">
+</p>
+
+<p align="center">
+Figure 4. Full processing workflow
+</p>
+
+<p>Our pipeline consists of 3 parts: <strong><em>intra-epoch</em></strong>, <strong><em>inter-epoch</em></strong> and <strong><em>combined</em></strong> (see Figure 4). For the sake of simplicity, we only exhibit the processing flow of two epochs, however, it can be easily extended to more epochs. The inter-epoch part contains the key developments. It matches the DSMs obtained in intra-epoch processing to roughly co-register 2 epochs, and uses it to narrow down the searching space for precise matching. The final correspondences are then used to refine the orientations in the combined processing (i.e., bundle adjustement).</p>
+
+<h2 id="rough-co-registration">
+<a class="anchor" href="#rough-co-registration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rough co-registration</h2>
+
+<p>Based on the image orientations and DSM from each epoch, we match the DSMs to roughly co-register the 2 epochs, as shown in Figure 5.</p>
+<p align="center">
+  <img src="images/tilematch.png" width="800">
+</p>
+
+<p align="center">
+Figure 5. Workflow of the rough co-registration
+</p>
+
+<p align="center">
+  <img src="images/rotation.png" width="800">
+</p>
+
+<p align="center">
+Figure 6. Four rotation hypotheses
+</p>
+
+<p>To increase the robustness of our correspondences, we do the following:</p>
+
+<ol>
+  <li>
+    <p>We introduce a tiling scheme and rotation hypotheses. The classical SuperGlue provides unsatisfactory result when applied to large images and it is not invariant to rotations larger than 45◦.</p>
+  </li>
+  <li>
+    <p>We choose matching DSMs over original RGB images, and it is motivated by several merits:</p>
+    <ul>
+      <li>Redundancy caused by the forward and side overlapping areas is removed;</li>
+      <li>It implicitly enables a follow-up search for globally consistent inliers;</li>
+      <li>It decreases the combinatorial complexity caused by rotation ambiguity;</li>
+      <li>Even under important scene changes, DSMs generally provide stable information over time.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>However, we also considered using orthophotos for the rough co-registration stage. Experiments have demonstrated that fewer matches can be retrieved. This is due to the fact that the scene’s radiometry changes are more pronounced than the 3D landscape’s evolution. Figure 7 presents a comparison of feature matching performed on RGB images and DSMs (more inliers in DSMs). It also shows the effectiveness of our strategy (SuperGlue combined with tiling scheme, followed by RANSAC) compared to the traditional SuperGlue.</p>
+
+<p>|(a) Multi-epoch orthophoto pair|(b) Multi-epoch DSM pair|
+|-|-|
+|&lt;p align="center"&gt; <img src="images/DOMoverlapping.png" width="600">&lt;/p&gt;|&lt;p align="center"&gt; <img src="images/DSMoverlapping.png" width="600">&lt;/p&gt;|
+|&lt;p align="center"&gt;(c) SuperGlue correspondences on orthophotos&lt;/p&gt;|&lt;p align="center"&gt;(d) SuperGlue correspondences on DSMs&lt;/p&gt;|
+|&lt;p align="center"&gt; <img src="images/DOM-SuperGlue.jpg" width="600"> &lt;/p&gt;|&lt;p align="center"&gt; <img src="images/DSM-SuperGlue.png" width="600"> &lt;/p&gt;|
+|&lt;p align="center"&gt;(e) Our correspondences on orthophotos&lt;/p&gt;|&lt;p align="center"&gt;(f) Our correspondences on DSMs&lt;/p&gt;|
+|&lt;p align="center"&gt; <img src="images/DOM-Ours.png" width="600"> &lt;/p&gt;|&lt;p align="center"&gt; <img src="images/DSM-Ours.png" width="600"> &lt;/p&gt;|</p>
+<p align="center">Figure 7. Comparison of co-registration with orthophotos and DSMs. (a-b) Red rectangles indicate the overlapping area.
+
+ &gt; Note: For more details, please refer to our publication [^3].
+
+## Precise matching
+
+We perform a precise matching under the guidance of the co-registered DSMs. Two options (guided matching and patch matching) are provide to get tentative inter-epoch correspondences, followed by removing the outliers with 3D RANSAC and cross correlation.
+
+### Get tentative inter-epoch correspondences
+
+1. Guided matching is designed for hand-crafted methods like SIFT. We predict the keypoint locaiton from one epoch to another via the co-registered DSM, and search only the neighborhood of the predicted keypoint to reduce ambiguity.
+2. Patch matching is designed for deep learning methods like SuperGlue. We use the co-registered DSM to predict the corresponding patches, followed with resampling to remove the scale and rotation difference. The patch pair will be feed into SuperGlue to get tentative correspondences.
+
+</p><p align="center">
+  <img src="images/precisematch.png" width="800">
+</p>
+
+<p align="center">
+Figure 8. Guided matching and patch matching
+</p>
+
+### Get enhanced inter-epoch correspondences
+
+We project the tentative correspondences onto respective DSMs to get 3D points, and remove outliers in a RANSAC routine based on 3D
+spatial similarity model.
+
+<p align="center">
+  <img src="images/3DRANSAC.png" width="300">
+</p>
+
+<p align="center">
+Figure 9. 3D RANSAC
+</p>
+
+### Get final inter-epoch correspondences
+
+We apply cross-correlation for final validation. Feature correspondences with their correlation scores below a predefined threshold
+are discarded. The rectangles in the picture below represent the cross-correlation window, false match (red) is eliminated, while true match (blue) is kept.
+
+<p align="center">
+  <img src="images/tiept.png" width="400">
+</p>
+
+<p align="center">
+Figure 10. Cross-correlation
+</p>
+
+# Experiment
+
+## Dataset with drastic scene changes
+
+We test our method on a dataset with drastic scene changes displayed below:
+
+|         (a) Epoch 1954        |         (b) Epoch 2014        |
+|-|-|
+| <p align="center">  <img src="images/1954.png" width="450"> </p> |<p align="center"> <img src="images/2014.png" width="450"> </p> |
+
+<p align="center">
+Figure 11. Dataset with drastic scene changes
+</p>
+
+We recover inter-epoch correspondences and refine the image orientations, then calculate DSMs in each epoch and adopt the conception of DoD (Difference of DSMs) for evaluation. Ideally, the DoD should only display the scene changes as shown in the picture below.
+
+<p align="center">
+  <img src="images/IdealDoD.png" width="600">
+</p>
+
+<p align="center">
+Figure 12. DoD in ideal case
+</p>
+
+But in real case, a doom effect as shown below would appear due to poorly estimated camera parameters.
+
+<p align="center">
+  <img src="images/RealDoD.png" width="600">
+</p>
+
+<p align="center">
+Figure 13. DoD in real case
+</p>
+
+We display 4 sets of DoDs below.
+
+1. DoD resulted from orientations based on 3D helmert transformation using 3 manually measured GCPs. This DoD is for comparison. As can be seen, this DoD showed obvious doom effect as the camera parameters of epoch 1954 are poorly estimated.
+2. DoD resulted from orientations based on 3D helmert transformation using GCPs automatically recovered from our rough co-registration. The systematic error is mitigated, but still obvious.
+3. DoD resulted from orientations refined in bundle adjustment with our correspondences based on guided matching.
+4. DoD resulted from orientations refined in bundle adjustment with our correspondences based on patch matching.
+
+In the DoD of (3) and (4), the doom effect is effectively mitigated while the real scene changes are kept, thanks to our numerous and precise inter-epoch correspondences.
+
+<p align="center">
+  <img src="images/DoD.png" width="800">
+</p>
+
+<p align="center">
+Figure 14. DoD in real case
+</p>
+
+A subregion of scene evolution is displayed below, a seaport as well as several new buildings emerged and are well detected with our method.
+
+<p align="center">
+  <img src="images/sceneEvolution.png" width="400">
+</p>
+
+<p align="center">
+Figure 15. Scene evolution
+</p>
+
+## Dataset with earthquake
+
+We also applied our method on a dataset that witnessed an earthquake, in order to see if the result is precise enough for detecting earthquake displacement. 
+The dataset locates in the north of Awaji Island, Japan. The well-known Kobe earthquake happened here in January 1995. 
+The dataset is mainly covered with mountain area and narrow urban zones along the sea (see Figure 16).
+We have two sets of images: pre-event acquired in 1991 and post-event acquired in 1995.
+
+<p align="center">
+  <img src="images/Kobe-DOM.png" width="700">
+</p>
+
+<p align="center">
+Figure 16. Scene demonstration
+</p>
+
+We display 5 sets of ground displacement below.
+
+1. Ground truth ground displacement provided by the Japan Meteorological Agency.
+2. Ground displacement resulted from orientations based on 3D helmert transformation using 3 manually measured GCPs.
+3. Ground displacement resulted from orientations based on 3D helmert transformation using GCPs automatically recovered from our rough co-registration.
+4. Ground displacement resulted from orientations refined in bundle adjustment with our correspondences based on guided matching.
+5. Ground displacement resulted from orientations refined in bundle adjustment with our correspondences based on patch matching.
+
+In (2) and (3), no earthquake fault is observed. However, in (4) and (5), an up-lateral strike-slip movement along the sea is present , which is coherent with (1). It indicates that the refined orientations are precise enough, thanks to our inter-epoch correspondences.
+
+<p align="center">
+  <img src="images/GroundDisplacement.png" width="800">
+</p>
+
+<p align="center">
+Figure 17. Groud displacement
+</p>
+
+
+# Conclusion
+
+Our method exploited rough-to-precise matching strategy to reduce ambiguity with the help of the depth information. We also introduced a tiling scheme to upscale the learning-based feature extractors to high-resolution imagery, and enhanced the matching robustness by removing scale and rotation ambiguities. Experiments showed that our method is able to mitigate systematic errors induced by poorly estimated camera, and it is robust to drastic scene changes.
+
+# Lesson learned
+
+## 1. It is useful to adopt *a priori* to reduce ambiguity.
+
+As multi-epoch images often display very different appearance, it helps to exploit *a priori* (e.g. depth information extracted from single epoch) to narrow down the searching space. The *a priori* could be used in as many ways as possible. There are at least 3 ways to take advantage of the depth information:
+* matching depth images for rough co-reigstration.
+* use co-registered depth information to handle scale and rotation difference in 2 ways: (1) for deep learning matching methods such as SuperGlue, get patch pairs free of scale and rotation difference; (2) for hand-crafted mehtods such as SIFT, reject candidate matches whose scales and rotations computed by
+SIFT are incoherent with prediction by depth.
+* filter candidate matches by projecting them onto depth to get 3D points, followed by running RANSAC on 3D Helmert transformation model.
+
+## 2. Deep learning feature matching methods underperform on high resolution images, it can be improved with tiling scheme.
+
+Deep learning feature matching methods often provide inaccurate features for different reasons:
+* network trained on small images in order to perform in real-time, for example SuperGlue;
+* features extracted on CNN feature maps with limited spatial resolution, for example D2-Net.
+
+We can obtain accurate features on high resolution images by tiling the input images, and matching the tile pairs in 2 possible ways:
+* If no *a priori* is available, it is neccessary to match all the potential tile pairs;
+* If *a priori* is available (e.g. the depths are roughly co-registered), it can be used to predict the tile from one image to another.
+
+#  Contact
+
+&gt; lulin.zhang.whu@gmail.com
+
+&gt; ewelina.rupnik@ign.fr
+
+# Reference
+
+[^1]: D. G. Lowe, Distinctive image features from scale-invariant keypoints, International journal of computer vision 60 (2) (2004) 91–110.
+
+[^2]: P.-E. Sarlin, D. DeTone, T. Malisiewicz, A. Rabinovich, Superglue: Learning feature matching with graph neural networks, in: Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, 4938–4947, 2020.
+
+[^3]: L. Zhang, E. Rupnik, M. Pierrot-Deseilligny, [Feature matching for multi-epoch historical aerial images](https://www.sciencedirect.com/science/article/pii/S0924271621002707), ISPRS journal of photogrammetry and remote sensing, 182 (2021), pp. 176-189
+
+[^4]: MicMac, GitHub, https://github.com/micmacIGN/micmac/tree/master/src/uti_phgrm/TiePHistorical, 2021.
+
+[^5]: [Jupyter tutorial of our method for matching multi-epoch historical aerial images](https://colab.research.google.com/drive/1poEXIeKbPcJT_2hyQOBhzcj1EEhO8OgD)
+
+[^6]: [Jupyter tutorial of our method for matching multi-epoch historical images (aerial and satellite images mixed)](https://colab.research.google.com/drive/14okQ8bBhEZmy6EGRIQvazTqrN39oc_K5)
+
+[^7]: Introduction video: [Feature matching for multi-epoch historical aerial images](https://youtu.be/YnF-F0UJaSM)
+
+[^8]: Project website: [Feature matching for multi-epoch historical aerial images](https://www.umr-lastig.fr/ewelina-rupnik/historicalfeatures.html)
+
+[^9]: Slides: [Feature matching for multi-epoch historical aerial images](https://drive.google.com/uc?id=16sJZiY3sTZSRZKBzpy2IHVloCLj6pEwP)
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="rfpt-sfpt/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/feature%20matching/historical%20images/multi-epoch/pose%20estimation/self-calibration/2021/11/17/Lulin-ZHANG-LaSTIG.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>RFPT blog on students&#39; research projects</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/rfpt-sfpt" title="rfpt-sfpt"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/rfpt_journal" title="rfpt_journal"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
