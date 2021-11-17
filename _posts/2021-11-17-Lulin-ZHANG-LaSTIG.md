@@ -20,7 +20,7 @@ Historical imagery is characterized by high spatial resolution and stereoscopic 
 
 |         (a) Intra-epoch image pair        | (b) Inter-epoch image pair |
 |-|-|
-| <p align="center"> ![]({{ site.baseurl }}/images/intra.png ) <img src=({{ site.baseurl }}/images/intra.png ) width="400"> </p> | <p align="center"> <img src="images/Homol-SIFT-3DRANSAC-CrossCorrelation_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1954-03-06__C3544-0211_1954_CDP866_0632.tif.png" width="400"> </p> |
+| <p align="center"> <img src=({{ site.baseurl }}/images/intra.png ) width="400"> </p> | <p align="center"> <img src="images/Homol-SIFT-3DRANSAC-CrossCorrelation_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1954-03-06__C3544-0211_1954_CDP866_0632.tif.png" width="400"> </p> |
 |   <p align="center">   (c) ***SIFT*** : good correspondences </p> |      <p align="center">    (d) ***SIFT*** : 0 correspondences  </p> |
 | <p align="center"> <img src="images/Homol-SIFT_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="400"> </p> | <p align="center">  <img src="images/Homol-SIFT-3DRANSAC-CrossCorrelation_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1954-03-06__C3544-0211_1954_CDP866_0632.tif.png" width="400"> </p> |
 |  <p align="center">   (e) ***SuperGlue*** : good correspondences </p>     |   <p align="center">   (f) ***SuperGlue*** : inaccurate correspondences  </p>       |
