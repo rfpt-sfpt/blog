@@ -8,7 +8,7 @@ comments: true
 hide: false
 search_exclude: true
 categories: [Feature matching, Historical images, Multi-epoch, Pose estimation, Self-calibration]
-description: "Feature matching for multi-epoch historical aerial images"
+description: "A new pipeline feature detection pipeline in open-source MicMac."
 title: "Feature matching for multi-epoch historical aerial images" 
 ---
 
