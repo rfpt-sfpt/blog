@@ -264,7 +264,7 @@ Our method exploited rough-to-precise matching strategy to reduce ambiguity with
 
 # Lesson learned
 
-## 1. It is useful to adopt *a priori* to reduce ambiguity.
+## It is useful to adopt *a priori* to reduce ambiguity.
 
 As multi-epoch images often display very different appearance, it helps to exploit *a priori* (e.g. depth information extracted from single epoch) to narrow down the searching space. The *a priori* could be used in as many ways as possible. There are at least 3 ways to take advantage of the depth information:
 * matching depth images for rough co-reigstration.
@@ -272,7 +272,7 @@ As multi-epoch images often display very different appearance, it helps to explo
 SIFT are incoherent with prediction by depth.
 * filter candidate matches by projecting them onto depth to get 3D points, followed by running RANSAC on 3D Helmert transformation model.
 
-## 2. Deep learning feature matching methods underperform on high resolution images, it can be improved with tiling scheme.
+## Deep learning feature matching methods underperform on high resolution images, it can be improved with tiling scheme.
 
 Deep learning feature matching methods often provide inaccurate features for different reasons:
 * network trained on small images in order to perform in real-time, for example SuperGlue;
